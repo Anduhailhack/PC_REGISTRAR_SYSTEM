@@ -1,3 +1,7 @@
 node_modules
 frontend/example.html
+<<<<<<< HEAD
 token.key
+=======
+note.txt
+>>>>>>> df37de841701efe2f614da8f52571e567bd1ff61
