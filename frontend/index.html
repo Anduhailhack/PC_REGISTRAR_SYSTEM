@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #json_app {
+            display: grid;
+            grid-template-columns: 30% 30% 30%;
+            gap: 10px;
+            column-gap: 40px;
+            width: 100vw;
+        }
+
+        .data {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 2px solid gray;
+            margin-bottom: 20px;
+        }
+    </style>
+    <title>Backend combo test</title>
+</head>
+<body>
+    <h1>Demena</h1>
+    <div id="json_app">
+
+    </div>
+    <button onclick="callBackend()">Call me</button>
+    <script>
+        
+        function callBackend()
+        {
+            fetch("http://localhost:5000/api/reg/getStudents").then((data)=>{
+                var x = data.json();
+                x.then(dt => {
+                    for (let i = 0; i < dt.length; i++)
+                    {
+                        var div = document.createElement("div");
+                        div.setAttribute("class", "data");
+                        var container = document.querySelector("#json_app");
+                        div.append(dt[i].id + " | " + dt[i].name + " | " + dt[i].roll);
+                        container.append(div);
+                    }
+
+                    // var div1 = document.createElement("div");
+                    // var div3 = document.createElement("div");
+                    // var div2 = document.createElement("div");
+                    // div1.setAttribute("class", "data");
+                    // div2.setAttribute("class", "data");
+                    // div3.setAttribute("class", "data");
+                    // var container = document.querySelector("#json_app");
+                    // div1.append(dt.id)
+                    // div2.append(dt.name)
+                    // div3.append(dt.roll);
+                    // container.append(div1, div2, div3);
+                })
+
+            })
+        }
+
+    </script>
+</body>
+</html>

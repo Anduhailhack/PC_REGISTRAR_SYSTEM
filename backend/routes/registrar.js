@@ -1,0 +1,67 @@
+const express = require ("express");
+const router = express.Router();
+
+router.get("/getStudents", (req, res) => {
+    const students = Array();
+    const temp = {
+        "id" : "DMU1303000",
+        "name" : "Dave",
+        "roll" : 0
+    };
+    
+    for (let i = 0; i < 100; i++)
+    {
+        temp.roll += 1;
+        students.push(temp);
+    }
+    res.json(students);
+})
+
+router.get("/getStudent/:id", (req, res) => {
+    const students = Array(
+        {
+            "id" : "DMU1303000",
+            "name" : "Dave",
+            "roll" : 1
+        },
+        {
+            "id" : "DMU1303001",
+            "name" : "Dave",
+            "roll" : 2
+        },
+        {
+            "id" : "DMU1303003",
+            "name" : "Dave",
+            "roll" : 3
+        },
+        {
+            "id" : "DMU1303002",
+            "name" : "Dave",
+            "roll" : 4
+        }
+    );
+    const temp = {
+        "id" : "DMU1303004",
+        "name" : "Dave",
+        "roll" : 0
+    };
+    
+    let bool = false;
+
+    students.forEach((value, index, array) => {
+        console.log(req.params.id == value.id);
+        if (value.id === req.params.id)
+        {
+            res.json(value);
+            bool = true;
+        }
+    })
+
+    if (!bool)
+    {
+        res.status(400).json({msg : "Error, student with the ID of " + req.params.id + " not found"})
+    }
+})
+
+
+module.exports = router
