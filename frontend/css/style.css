@@ -1,3 +1,8 @@
+:root {
+    --primaryColor: #000;
+    --accentColor: green;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,5 +10,5 @@
 }
 
 body {
-    background: #000;
+    background: var(--primaryColor);
 }
