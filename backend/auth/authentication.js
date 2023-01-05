@@ -8,3 +8,5 @@ router.post('/signup', (req, res) => {
     console.log(req.body);
     res.end();
 })
+
+module.exports = router
