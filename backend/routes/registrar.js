@@ -1,20 +1,9 @@
 const express = require ("express");
+//const db = require("../database/adapter")
 const router = express.Router();
 
 router.get("/getStudents", (req, res) => {
-    const students = Array();
-    const temp = {
-        "id" : "DMU1303000",
-        "name" : "Dave",
-        "roll" : 0
-    };
-    
-    for (let i = 0; i < 100; i++)
-    {
-        temp.roll += 1;
-        students.push(temp);
-    }
-    res.json(students);
+    console.log(req.cookies);
 })
 
 router.get("/getStudent/:id", (req, res) => {

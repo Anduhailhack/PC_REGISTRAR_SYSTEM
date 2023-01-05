@@ -3,7 +3,7 @@ const process = require ("process");
 const path = require("path");
 const registrar = require("./routes/registrar");
 const security = require("./routes/sec_check");
-const login = require("./auth/login.js");
+const auth = require("./auth/authentication");
 
 const app = express();
 
@@ -12,7 +12,7 @@ app.use("/api/reg/", registrar);
 app.use("/api/sec/", security);
 
 app.use(express.json());
-app.use("/api/auth/", login);
+app.use("/api/auth/", auth);
 
 const PORT = process.env.PORT || 5000
 
