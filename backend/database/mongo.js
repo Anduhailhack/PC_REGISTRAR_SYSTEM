@@ -1,0 +1,6 @@
+class MongoDB {
+    constructor()
+    {
+        
+    }
+}
