@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="STYLE.css" />
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js" integrity="sha512-ZDSPMa/JM1D+7kdg2x3BsruQ6T/JpJo3jWDWkCZsP+5yVyp1KfESqLI+7RqB5k24F7p2cV7i2YHh/890y6P6Sw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+   <link href="qrcode.min.js">
+    <title>QR code generator</title>
+  </head>
+  <body>
+    <!--first landing page div start -->
+    <div class="landing-page">
+
+        <div class="circle-shadow shadow1"></div>
+        <div class="circle-shadow shadow2"></div>
+        <div class="circle-shadow shadow3"></div>
+        <div id="links">
+          <ul>
+            <li><a href="HOME.html">HOME</a> </li>
+            <li><a href="#"> ABOUT US</a> </li>
+            <li><a href="Qr.html">Register</a> </li>
+            <li><a href="#">CONTACT US</a> </li>
+            </ul>
+          </div>
+ <div class="middle-content">
+  <h2>QR Code generator</h2>
+  <div class="middle-box">
+  <div id="all-part">
+    <div id="left-part">
+      <form>
+        <input type="text" id='U-input' placeholder="type input"><br>
+        <button  id="QR-btns" class="QR-btn btns">Create QR</button>
+      </form>
+     </div>
+     <div id="right-part">
+      <p>PC`s Owner Information</p>
+      <div id="QR-output"></div>
+     </div>
+  </div>
+  </div>
+
+ </div>
+        
+
+    </div>    <!--first landing page div end -->
+
+  
+    <script src="app.js"></script>
+  </body>
+</html>

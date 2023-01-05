@@ -1,0 +1,160 @@
+:root{
+    --main-color:#fff;
+}
+
+*{
+    margin:0;
+    padding:0;
+    color:#fff;
+}
+
+.landing-page{
+    width:100%;
+    height:100vh;
+    background-color:#000;
+    padding:10px;
+}
+.circle-shadow{
+    position:absolute;
+    top:-50px;
+    left:-50px;
+    height:200px;
+    width:200px;
+    box-shadow:5px 5px 40px 50px #1ba965;
+    filter:blur(70px);
+    opacity:.5;
+    border: solid balck 2px;
+    border-radius:50%;
+    background-color:#1ba965;
+}
+
+.shadow2{
+    position:absolute;
+    top:50px;
+    left:85%;
+}
+.shadow3{
+    position:absolute;
+    top:80%;
+    left:40%;
+    opacity:.3;
+    filter:blur(150px);
+
+}
+/* link and logo styling part */
+
+#links ul{
+    display:flex;
+    justify-content:center;
+    margin-top:20px;
+}
+#links ul li{
+    list-style:none;
+    margin:10px;
+}
+#links ul li a{
+    text-decoration: none;
+    font-size:10px;
+    border:solid #1ba965 1px;
+    padding:10px;
+    border-radius:7px;
+    transition:background .4s linear ;
+}
+#links ul li a:hover{
+background-color: #1ba965;
+}
+
+#links div{
+    position:absolute;
+    top:20px;
+    left:85%;
+}
+#links div button{
+    font-size:10px;
+    padding:10px;
+    border-radius:7px;
+    background-color:#1ba965;
+
+}
+
+/* the middle content styling parts */
+
+.middle-content{
+    text-align:center;
+    position:relative;
+    top:20%;
+}
+
+.middle-content p{
+    line-height:25px;
+    font-size:15px;  
+    padding-bottom:10px;
+}
+.middle-content #singleP{
+    text-align:center;
+    color:#1ba965;
+}
+.middle-content h1{
+font-size:52px;
+}
+.middle-content h1 span{
+    color:#1ba965;
+}
+
+.btns{
+    background-color:transparent;
+    color:#fff;
+    padding:10px;
+    margin:10px 5px;
+    border:solid rgb(80, 76, 76) .5px;
+    border-radius:7px;
+    transition:transform, background, .4s linear ;
+}
+.btns:hover{
+    transform:scale(1.1);
+    background-color:#1ba965;
+    border:solid 1px #1ba965;
+}
+/* css styling for the qr code page */
+.middle-content h2{
+    margin: 10px 10px 20px 20px;
+    text-align:start;
+    
+}
+ .middle-content .middle-box{
+    width:100%;
+    height:300px;
+    background-color:#1ba965;
+    border-radius:20px;
+    opacity:.3;
+    transition:box-shadow, 200ms linear;
+ }
+ .middle-content .middle-box:hover{
+    box-shadow:5px 5px 3px 3px #38da8b;
+   
+ }
+ /* styling box part */
+ #all-part{
+    display:flex;
+    justify-content: space-around;
+    padding:20px;
+ }
+ #all-part input,button,p{
+    margin-top:20px;
+    text-align:center;
+    color:#fff;
+ }
+ #all-part input{
+    outline:none;
+    color:#000;
+    border-radius:10px;
+    height:30px;
+ }
+ #all-part button{
+    background-color:#3bd389;
+ }
+ #QR-output{
+    width:300px;
+    height:300px;
+    background-color:yellow;
+ }
