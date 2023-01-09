@@ -1,5 +1,4 @@
 const { MySqlDB } = require("./mysql");
-//import config from './config.json' assert {type: 'json'};
 const config = require("./config.json");
 
 class DbAdapter {
@@ -7,48 +6,46 @@ class DbAdapter {
     constructor (DBTYPE)
     {
         this.DBTYPE = (DBTYPE) ? DBTYPE : "mysql";
-        this.connect(this.DBTYPE);
     }
 
-    connect(DBTYPE)
+    async connect()
     {
-        if (DBTYPE == "mysql")
+        if (this.DBTYPE == "mysql")
         {
             this.db = new MySqlDB(config.mysql.host, config.mysql.user, config.mysql.pass, config.mysql.db_name);
-            this.db.connect();
+            await this.db.connect();
         }
     }
 
-    setUser(email, username, password)
+    async setUser({email, username, password})
     {
-        this.db.setUser(email, username, password);
+        await this.db.setUser(email, username, password);
     }
 
-    setStudent()
-    {
-
-    }
-
-    setDevice()
+    async setStudent()
     {
 
     }
 
-    getUser()
+    async setDevice()
     {
 
     }
 
-    getStudent()
+    async getUser()
     {
 
     }
 
-    getDevice()
+    async getStudent()
+    {
+
+    }
+
+    async getDevice()
     {
 
     }
 }
 
-const adp = new DbAdapter();
-adp.setUser("meka@gmail.com", "@meka", "password");
+module.exports = {DbAdapter};

@@ -9,7 +9,7 @@ class MySqlDB {
         this.db_name = db_name;
     }
 
-    connect()
+    async connect()
     {
         this.db = mysql.createConnection({
             host : this.host, 
@@ -19,7 +19,7 @@ class MySqlDB {
         });
     }
 
-    setUser(email, user, pass)
+    async setUser(email, user, pass)
     {
         this.db.connect((err) => {
             if (err) throw err;
