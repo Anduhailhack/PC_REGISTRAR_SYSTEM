@@ -3,7 +3,35 @@ const express = require ("express");
 const router = express.Router();
 
 router.get("/getStudents", (req, res) => {
-    console.log(req.cookies);
+    const students = Array(
+        {
+            "id" : "DMU1303000",
+            "name" : "Dave",
+            "roll" : 1
+        },
+        {
+            "id" : "DMU1303001",
+            "name" : "Dave",
+            "roll" : 2
+        },
+        {
+            "id" : "DMU1303003",
+            "name" : "Dave",
+            "roll" : 3
+        },
+        {
+            "id" : "DMU1303002",
+            "name" : "Dave",
+            "roll" : 4
+        }
+    );
+    const temp = {
+        "id" : "DMU1303004",
+        "name" : "Dave",
+        "roll" : 0
+    };
+
+    res.json(students);
 })
 
 router.get("/getStudent/:id", (req, res) => {

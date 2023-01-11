@@ -8,18 +8,32 @@ class DbAdapter {
         this.DBTYPE = (DBTYPE) ? DBTYPE : "mysql";
     }
 
-    async connect()
+    connect()
     {
         if (this.DBTYPE == "mysql")
         {
             this.db = new MySqlDB(config.mysql.host, config.mysql.user, config.mysql.pass, config.mysql.db_name);
-            await this.db.connect();
+            this.db.connect();
         }
     }
 
-    async setUser({email, username, password})
+    connect(result)
     {
-        await this.db.setUser(email, username, password);
+        if (this.DBTYPE == "mysql")
+        {
+            this.db = new MySqlDB(config.mysql.host, config.mysql.user, config.mysql.pass, config.mysql.db_name);
+            this.db.connect(result);
+        }
+    }
+
+    setUser(email, username, password, user_id)
+    {    
+        this.db.setUser(email, username, password, user_id);  
+    }
+
+    setUser(email, username, password, user_id, result)
+    {    
+        this.db.setUser(email, username, password, user_id, result);  
     }
 
     async setStudent()
@@ -32,9 +46,9 @@ class DbAdapter {
 
     }
 
-    async getUser()
+    getUser(user, pass, result)
     {
-
+        this.db.getUser(user, pass, result);
     }
 
     async getStudent()
