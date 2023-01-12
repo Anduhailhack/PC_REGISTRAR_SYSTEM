@@ -1,82 +1,61 @@
 const express = require ("express");
-//const db = require("../database/adapter")
+const {DbAdapter} = require("../database/adapter")
 const router = express.Router();
 
-router.get("/getStudents", (req, res) => {
-    const students = Array(
-        {
-            "id" : "DMU1303000",
-            "name" : "Dave",
-            "roll" : 1
-        },
-        {
-            "id" : "DMU1303001",
-            "name" : "Dave",
-            "roll" : 2
-        },
-        {
-            "id" : "DMU1303003",
-            "name" : "Dave",
-            "roll" : 3
-        },
-        {
-            "id" : "DMU1303002",
-            "name" : "Dave",
-            "roll" : 4
-        }
-    );
-    const temp = {
-        "id" : "DMU1303004",
-        "name" : "Dave",
-        "roll" : 0
-    };
+router.get("/getStudents/:lower_bound", (req, res) => {
+    let adp = new DbAdapter("mysql");
+    adp.connect((err) => {
+        if (err) res.status(500).json({status : "error", msg : "Database connection error.", route : "f"}).end();
+    })
 
-    res.json(students);
+    if (req.params)
+    {
+        if (req.params.lower_bound)
+        {
+            adp.getStudents(req.params.lower_bound, (err, result) => {
+                if (err) 
+                {
+                    if (err.code != 'ECONNREFUSED')
+                    {
+                        res.status(500).json({status : "error", msg : "Database connection error.", route : "s"});
+                    }
+                }
+                
+                if (result)
+                {
+                    res.status(500).json({status : "success", msg : "Student fetched successfully.", route : "", result : result});
+                }
+            })
+        }
+    }
+    
 })
 
 router.get("/getStudent/:id", (req, res) => {
-    const students = Array(
-        {
-            "id" : "DMU1303000",
-            "name" : "Dave",
-            "roll" : 1
-        },
-        {
-            "id" : "DMU1303001",
-            "name" : "Dave",
-            "roll" : 2
-        },
-        {
-            "id" : "DMU1303003",
-            "name" : "Dave",
-            "roll" : 3
-        },
-        {
-            "id" : "DMU1303002",
-            "name" : "Dave",
-            "roll" : 4
-        }
-    );
-    const temp = {
-        "id" : "DMU1303004",
-        "name" : "Dave",
-        "roll" : 0
-    };
-    
-    let bool = false;
-
-    students.forEach((value, index, array) => {
-        console.log(req.params.id == value.id);
-        if (value.id === req.params.id)
-        {
-            res.json(value);
-            bool = true;
-        }
+    let adp = new DbAdapter("mysql");
+    adp.connect((err) => {
+        if (err) res.status(500).json({status : "error", msg : "Database connection error.", route : "f"}).end();
     })
 
-    if (!bool)
+    if (req.params)
     {
-        res.status(400).json({msg : "Error, student with the ID of " + req.params.id + " not found"})
+        if (req.params.lower_bound)
+        {
+            adp.getStudent(req.params.id, (err, result) => {
+                if (err) 
+                {
+                    if (err.code != 'ECONNREFUSED')
+                    {
+                        res.status(500).json({status : "error", msg : "Database connection error.", route : "s"});
+                    }
+                }
+                
+                if (result)
+                {
+                    res.status(500).json({status : "success", msg : "Student fetched successfully.", route : "", result : result});
+                }
+            })
+        }
     }
 })
 

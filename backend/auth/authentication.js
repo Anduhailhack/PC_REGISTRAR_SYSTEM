@@ -16,12 +16,11 @@ router.post('/login', (req, res) => {
     if (req.body.username && req.body.password)
     {
         let isValid = _validateInput(req.body, true);
-
         if (isValid.status)
         {
-            let apt = new DbAdapter("mysql");
-            apt.connect(err => {if (err) res.status(500).json({status : "error", msg : "Database connection error.", route : ""})});
-            apt.getUser(req.body.username, async (err, result) => {
+            let adp = new DbAdapter("mysql");
+            adp.connect(err => {if (err) res.status(500).json({status : "error", msg : "Database connection error.", route : ""})});
+            adp.getUser(req.body.username, async (err, result) => {
                 if (err) res.status(500).json({status : "error", msg : "Database connection error.", route : ""});
 
                 if (result)
@@ -45,6 +44,8 @@ router.post('/login', (req, res) => {
                     }
                 }
             })
+        }else {
+            res.status(500).json({status : "error", msg : isValid.msg, route : "/api/auth/login"});
         }
     }
 })
@@ -60,12 +61,12 @@ router.post('/signup', async (req, res, next) => {
 
         if (isValid.status)
         {
-            let apt = new DbAdapter("mysql");
+            let adp = new DbAdapter("mysql");
             let salt = await bcrypt.genSalt();
             let password = await bcrypt.hash(req.body.password, salt);
             let user_id = crypto.createHash('md5').update(req.body.username + req.body.password).digest('hex');
-            apt.connect(err => {if (err) res.status(500).json({status : "error", msg : "Database connection error.", route : ""})});
-            apt.setUser(req.body.email, req.body.username, password, user_id, err => {
+            adp.connect(err => {if (err) res.status(500).json({status : "error", msg : "Database connection error.", route : ""})});
+            adp.setUser(req.body.email, req.body.username, password, user_id, err => {
                 if (err) {
                     if (err.code){
                         if (err.code == 'ER_DUP_ENTRY' && err.sqlMessage.indexOf('email') != -1)

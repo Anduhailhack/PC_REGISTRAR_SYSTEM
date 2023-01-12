@@ -51,9 +51,19 @@ class DbAdapter {
         this.db.getUser(user, pass, result);
     }
 
-    async getStudent()
+    getStudent()
     {
 
+    }
+
+    getStudent(id, result)
+    {
+        this.db.getStudents(id, result);
+    }
+
+    getStudents(lower_bound, result)
+    {
+        this.db.getStudents(lower_bound, result);
     }
 
     async getDevice()

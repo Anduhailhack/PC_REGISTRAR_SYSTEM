@@ -49,6 +49,16 @@ class MySqlDB {
     {
         this.db.query("SELECT * FROM `user` WHERE `username` = '" + user + "';", result);
     }
+
+    getStudent(id, result)
+    {
+        this.db.query("SELECT * FROM `student` WHERE `ID` = '" + id + "';", result);
+    }
+
+    getStudents(lower_bound, result)
+    {
+        this.db.query("SELECT * FROM `student` WHERE `roll_no` > '" + lower_bound + "' LIMIT 20;", result);
+    }
 }
 
 module.exports = {MySqlDB};
