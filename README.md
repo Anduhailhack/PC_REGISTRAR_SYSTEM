@@ -1,2 +1,1 @@
-A project for pc registrar system!
-Updated after 2nd fork -BAb!
+PC REGISTARAR SYSTEM for school and universities.
