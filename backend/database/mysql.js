@@ -52,12 +52,37 @@ class MySqlDB {
 
     getStudent(id, result)
     {
-        this.db.query("SELECT * FROM `student` WHERE `ID` = '" + id + "';", result);
+        this.db.query("SELECT * FROM `student` WHERE `id` = " + id + ";", result);
     }
 
     getStudents(lower_bound, result)
     {
-        this.db.query("SELECT * FROM `student` WHERE `roll_no` > '" + lower_bound + "' LIMIT 20;", result);
+        this.db.query("SELECT * FROM `student` WHERE `id` > '" + lower_bound + "' LIMIT 20;", result);
+    }
+
+    getDevice(dev_id, result)
+    {
+        this.db.query("SELECT * FROM `device` WHERE `dev_id` = '" + dev_id + "';", result);
+    }
+
+    getDevices(stud_id, result)
+    {
+        this.db.query("SELECT * FROM `device` WHERE `stud_id` = '" + stud_id + "';", result);
+    }
+
+    findStudent(f_name, result)
+    {
+        this.db.query("SELECT * FROM `student` WHERE `f_name` LIKE %" + f_name + "%;", result);
+    }
+
+    findDevice(brand, type, result)
+    {
+        this.db.query("SELECT * FROM `device` WHERE `brand` = '" + brand + "' AND `device_type` = '" + type + "';", result);
+    }
+
+    check(service_id, serial_number, result)
+    {
+        this.db.query("SELECT * FROM `device` WHERE `service_id` = '" + service_id + "' AND `serial_number` = '" + serial_number + "';", result);
     }
 }
 

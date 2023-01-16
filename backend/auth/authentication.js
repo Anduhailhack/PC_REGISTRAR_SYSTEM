@@ -90,7 +90,7 @@ router.post('/signup', async (req, res, next) => {
             });
             
         }else {
-            res.status(400).json({msg} = isValid.msg);
+            res.status(400).json({status : "success", msg : isValid.msg, route : "/"});
         }
     }else {
         res.status(400).json({status: "error", msg : "All inputs are required.", route : ""});

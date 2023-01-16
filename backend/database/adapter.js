@@ -51,14 +51,9 @@ class DbAdapter {
         this.db.getUser(user, pass, result);
     }
 
-    getStudent()
-    {
-
-    }
-
     getStudent(id, result)
     {
-        this.db.getStudents(id, result);
+        this.db.getStudent(id, result);
     }
 
     getStudents(lower_bound, result)
@@ -66,9 +61,29 @@ class DbAdapter {
         this.db.getStudents(lower_bound, result);
     }
 
-    async getDevice()
+    getDevice(dev_id, result)
     {
+        this.db.getDevice(dev_id, result);
+    }
 
+    getDevices(stud_id, result)
+    {
+        this.db.getDevices(stud_id, result);
+    }
+
+    findStudent(f_name, result)
+    {
+        this.db.findStudent(f_name, result);
+    }
+
+    findDevice(brand, type, result)
+    {
+        this.db.findDevice(brand, type, result);
+    }
+
+    check(service_id, serial_number, result)
+    {
+        this.db.check(service_id, serial_number, result);
     }
 }
 
