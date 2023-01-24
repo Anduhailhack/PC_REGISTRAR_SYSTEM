@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style-new.css" />
+    <title>Home</title>
+</head>
+<body>
+    <div class="landing-page">
+        <section class="page-content">
+            <div class="circle-shadow shadow1"></div>
+            <div class="circle-shadow shadow2"></div>
+            <div class="circle-shadow shadow3"></div>
+
+            <div class="nav-bar">
+                <div class="logo">
+                    <img src="" alt="" class="logo-img">
+                    <span class="green-txt">PC - <span class="white-txt">Registrar</span></span>
+                </div>
+                <div class="tabs">
+                    <ul>
+                        <li class="btn">
+                          <a href="/aboutFOLDER/About-us.html"> About us</a>
+                        </li>
+                        <li class="btn">
+                            <a href="#">Qr Code</a>
+                        </li>
+                        <li class="btn">
+                            <a href="#">Contact us</a>
+                        </li>
+                    </ul>
+                    <div class="call-of-action">
+                      <button id="show-login" class="btn-solid">Log in</button>
+                      <button id="signup-btn" class="btn-solid">Sign up</button>
+                    </div>
+                </div>
+            </div>
+            <main class="main-area">
+                <p id="singleP">This is a student</p>
+                <h1><span>PC - </span>Registration System</h1>
+                <p>
+                    You can register any private device with a serial number to store, manage and access it in a fast and secure manner! 
+                </p>
+                <div class="call-of-action">
+                    <button class="btn-solid" onclick="window.location='/REGISTRATIONFOLDER/index1.html'">Register Here</button>
+                    <button class="btn-solid">Scan Here</button>         
+                </div>
+            </main>
+        </section>
+    </div>
+    <div class="popup login-popup">
+        <div class="btn-cancel-popup" id="close-login-popup">&times;</div>
+        <div class="form-container">
+            <div class="form-title">
+                <h2>Log in</h2>
+            </div>
+            <div class="form-element">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" placeholder="Username" />
+            </div>
+            <div class="form-element">
+              <label for="password">Password</label>
+              <input type="password" name="password" id="password" placeholder="Password" />
+            </div>
+            <div class="form-element">
+                <label for="remember-me">
+                    <input type="checkbox" /> Remember me
+                </label>
+            </div>
+            <div class="form-element">
+              <button class="btn-solid">Log in</button>
+            </div> 
+            <div class="form-element" id="forgot">
+                <a class="accent-txt forget-pass" href="#">Forgot password?</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup signup-popup">
+        <div class="btn-cancel-popup" id="close-signup-popup">&times;</div>
+        <div class="form-container">
+            <div class="form-title">
+                <h2>Sign up</h2>
+            </div>
+            <div class="form-element">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" placeholder="Username" />
+            </div>
+            <div class="form-element">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="Email" />
+            </div>
+            <div class="form-element">
+              <label for="password">Password</label>
+              <input type="password" name="password" id="password" placeholder="Password" />
+            </div>
+            <div class="form-element">
+                <label for="password">Confirm Password</label>
+                <input type="password" name="confirm-password" id="con-password" placeholder="Confirm password" />
+            </div>
+            <div class="form-element">
+              <button class="btn-solid">Log in</button>
+            </div> 
+        </div>
+    </div>
+
+    <script src="./js/script.js"></script>
+
+</body>
+</html>

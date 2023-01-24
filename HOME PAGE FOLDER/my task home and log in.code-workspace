@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"name": "my task home and log in",
+			"path": ".."
+		}
+	],
+	"settings": {
+		"liveServer.settings.port": 5502
+	}
+}

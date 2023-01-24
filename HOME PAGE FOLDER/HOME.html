@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="STYLE.css" />
+    <title>HOME page</title>
+  </head>
+  <body>
+    <!--first landing page div start -->
+    <div class="landing-page">
+      <div class="page-content">
+        <div class="circle-shadow shadow1"></div>
+        <div class="circle-shadow shadow2"></div>
+        <div class="circle-shadow shadow3"></div>
+
+        <div id="img">
+          <img class="img" src="./assets/img/logo1.png" alt="logo img" />
+          <span id="logo-text">
+            <span id="firstname">PC - </span>Registeration</span>
+        </div>
+        <div id="links">
+          <ul>
+            <!-- <li class="btns">
+              <a href="/REGISTRATIONFOLDER/index1.html">Register</a>
+            </li> -->
+            <li class="btns">
+              <a href="/aboutFOLDER/About-us.html"> ABOUT US</a>
+            </li>
+            <li class="btns"><a href="#">Qr Code</a></li>
+            <li class="btns"><a href="#">CONTACT US</a></li>
+            <div id="link-btn">
+              <button id="show-login" class="btns">Log In</button>
+              <button id="signup-btn" class="btns">Sign Up</button>
+            </div>
+          </ul>
+        </div> 
+
+        <div class="middle-content">
+          <p id="singleP">this is a student</p>
+          <h1><span>PC - </span>Registration System</h1>
+          <p>
+            this is student electronic device registration system <br />
+            please rigster your device here ...
+          </p>
+        </div>
+     <br><br><br><br><br><br>
+        <div class="page-btns">
+          <span>
+            <button class="btns" onclick="window.location='/REGISTRATIONFOLDER/index1.html'">Register Here</button>
+<a href="/REGISTRATIONFOLDER/index1.html"><button type="text" class="btns">Register Here</button></a>          
+</span>
+        </div>
+      </div>
+      <!-- log in html start -->
+
+      <div class="popup">
+        <div id="login-btn">&times;</div>
+        <div class="form">
+          <h2>Log in</h2>
+          <form
+            id="login"
+            action="http://192.168.43.77:5000/api/auth/login"
+            method="post"
+          >
+            <div class="form-element">
+              <label for="user name">User name</label>
+              <input
+                type="text"
+                name="username"
+                id="username"
+                placeholder="user name"
+              />
+            </div>
+            <div class="form-element">
+              <label for="password">Password</label>
+              <input type="password" name="password" id="password" placeholder="Enter password" />
+            </div>
+            <div class="form-element" id="remember-me">
+              <input type="checkbox" id="remember-me" />
+              <label for="remember-me">Remember me</label>
+            </div>
+            <div class="form-element" id="inside-signin">
+              <button type="submit" class="btns">Log In</button>
+            </div> 
+          </form>
+        </div>
+        <div class="form-element" id="forgot">
+          <a href="#">Forgot password?</a>
+        </div>
+      </div>
+      <!-- pop up html end -->
+
+      <!-- sign up table div start -->
+      <div id="popup-container">
+        <div id="close-btn">&times;</div>
+        <h2 id="sign-up">Sign Up</h2>
+        <form
+          id="form-signup"
+          action="http://192.168.43.77/api/auth/login"
+          method="post"
+        >
+          <p>
+            <label id="email">Email</label><br />
+            <input type="text" id="email" name="email" />
+          </p>
+          <p>
+            <label id="username">username</label><br />
+            <input type="text" id="username" name="username" />
+          </p>
+          <p>
+            <label id="password">Password</label><br />
+            <input type="password" id="password" name="password" />
+          </p>
+          <p>
+            <label id="confirmpassword">Conform Password</label><br/>
+            <input
+              type="password"
+              id="confirmpassword"
+              name="confirmpassword"
+            />
+          </p>
+          <p>
+            <br />
+            <input type="checkbox" id="checkbox" name="checkbox" />
+            Remember Me
+          </p>
+          <div class="bottom-part">
+            <p>
+              <button type="submit" id="submit-btn">Sign Up</button>
+            </p>
+            <p><a href="#">Forgot Passoword ?</a></p>
+          </div>
+        </form>
+      </div>
+
+      <!-- sign up table div end -->
+    </div>
+    <!--first landing page div end -->
+    <script src="app.js"></script>
+  </body>
+</html>

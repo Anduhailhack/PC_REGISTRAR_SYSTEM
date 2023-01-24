@@ -1,0 +1,350 @@
+*{
+    margin:0;
+    padding:0;
+    color:#fff;
+}
+body{
+    overflow:hidden;
+}
+.landing-page{
+    width:100%;
+    height:100vh;
+    background-color:#000;
+    padding:10px;
+   
+}
+
+.page-content.active{
+ filter:blur(8px);
+ pointer-events:none;
+}
+
+/* logo image styling */
+.img{
+    width:50px;
+    height:45px;
+    margin:10px;
+}
+#img #firstname{
+    color:#1ba965;
+    font-weight:800;
+}
+#logo-text{
+    font-size:20px;
+}
+
+.circle-shadow{
+    position:absolute;
+    top:-50px;
+    left:-50px;
+    height:200px;
+    width:200px;
+    box-shadow:5px 5px 40px 50px #1ba965;
+    filter:blur(70px);
+    opacity:.7;
+    border: solid balck 2px;
+    border-radius:50%;
+    background-color:#1ba965;
+}
+
+.shadow2{
+    position:absolute;
+    top:10%;
+    left:85%;
+}
+.shadow3{
+    position:absolute;
+    top:60%;
+    left:20%;
+    opacity:.7;
+    filter:blur(150px);
+
+}
+/* link and logo styling part */
+#links{
+    position: relative;
+    top:-50px;
+
+}
+#links ul{
+display:flex;
+justify-content: center;
+}
+
+#links ul li{
+    list-style:none;
+  
+}
+#links ul li a{
+    text-decoration:none;
+}
+
+#links div{
+    position:absolute;
+    left:85%;
+}
+#links div button{
+    font-size:10px;
+    padding:10px;
+    border-radius:7px;
+    background-color:#1ba965;
+
+}
+/* the middle content styling parts */
+
+.middle-content{
+    text-align:center;
+    position:relative;
+    top:115px;
+}
+
+.middle-content p{
+    line-height:25px;
+    font-size:15px;  
+    padding-bottom:10px;
+}
+.middle-content #singleP{
+    text-align:center;
+    color:#1ba965;
+}
+.middle-content h1{
+font-size:52px;
+}
+#reg-btn{
+    
+        background-color:transparent;
+        color:#fff;
+        padding:10px;
+        margin:10px 5px;
+        border:solid #1ba965 1px;
+        border-radius:7px;
+        transition: background, .4s linear ;
+        font-size:10px;
+      
+}
+.btns{
+    background-color: transparent;
+    color:#fff;
+    padding:10px;
+    margin:10px 5px;
+    border:solid #1ba965 1px;
+    border-radius:7px;
+    transition: background .4s linear ;
+    font-size:10px;
+  
+}
+.btns:hover{
+    background-color:#1ba965;
+    border:solid 1px #1ba965;
+}
+.page-btns{
+    text-align:center;
+    position:relative;
+}
+ /*pop up table styling */
+ 
+.center button {
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(---accentcolor);
+    background: #f5f5f5;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 7px;
+}
+
+.popup {
+    position: absolute;
+    padding: 5rem;
+    top: -150%;
+    left: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.25);
+    width: 300px;
+    height: 400px;
+    padding: 20px 30px ;
+    background:transparent;
+    border-radius: 7px;
+    border:solid #1ba965 1px;  
+}
+
+.popup.active {
+    top: 50%;
+    opacity: 1;
+    transform: translate(-50%, -50%);
+    transition: top 0ms ease-in-out 0ms,
+              opacity 200ms ease-in-out 0ms,
+              transform 200ms ease-in-out 0ms;
+}
+
+.popup #login-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    background: #1ba965;
+    color: black;
+    text-align: center;
+    line-height: 18px;
+    border-radius:50%;
+    
+}
+
+.popup .form h2 {
+    text-align: center;
+    color: #fff;
+    margin: 10px 0px 20px;
+    font-size: 25px;
+}
+
+.popup .form .form-element {
+    margin: 25px 0px;
+}
+
+.popup.form.form-element label {
+    font-size: 14px;
+    color: #888;
+}
+
+.popup .form .form-element input[type="text"], 
+.popup .form .form-element input[type="password"] {
+    margin-top: 5px ;
+    font-size: medium;
+    margin: auto;
+    display: block;
+    width: 250px;
+    height:15px;
+    padding: 10px;
+    outline: none;
+    color: #f5f5f5;
+    background: #053b21ec;
+    border: 1px solid #000;
+    padding:10px;
+    border-radius: 7px;
+    transition: 0.5s;
+} 
+
+.popup .form .form-element input[type="text"]:hover, 
+.popup .form .form-element input[type="password"]:hover {
+    background: #0fa75dec;
+}
+
+.popup .form .form-element button {
+    cursor: pointer;
+    width: 100%;
+    height: 40px;
+    border: none;
+    border: 2px solid transparent;
+    background: rgba(34, 34, 34, 0.89);
+    color: #f5f5f5;
+    font-size: 16px ;
+    outline: none;
+    border-radius: 10px;
+}
+
+.popup .form .form-element a {
+    display: block;
+    text-align: right;
+    font-size: 15px;
+    color: #1ba965;
+    text-decoration: none;
+}
+
+#inside-signin .btns{
+width:100px;
+background-color:#1ba965;
+}
+#forgot a {
+    margin-top: 2rem ;
+    display: block;
+    text-align: right;
+    font-size: 15px;
+    color: #1ba965;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 500ms;
+}
+
+
+/* sign up table styling start */
+
+#popup-container{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    border:solid #053b21ec 2px;
+    border-radius:7px;
+    width:300px;
+    height:400px;
+    padding:20px;
+    opacity:0;
+}
+
+#popup-container.active{
+    opacity:1;
+}
+
+#popup-container #close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    background: #1ba965;
+    color: black;
+    text-align: center;
+    line-height: 18px;
+    border-radius:50%;
+    
+}
+#popup-container #sign-up{
+    text-align:center;
+}
+#popup-container #form-signup label{
+    font-size: 14px;
+    color:#fff;
+    
+}
+#popup-container #form-signup input{
+width: 250px;
+height:15px;
+font-size:medium;
+border-radius:7px;
+outline:none;
+border:1px solid #053b21ec;
+padding:10px;
+background: #053b21ec;
+
+}
+#popup-container #form-signup input:hover{
+    background: #0fa75dec;
+}
+#popup-container #form-signup #checkbox{
+width:fit-content;
+}
+#popup-container #form-signup button{
+  padding:10px;
+  border-radius:7px;
+  background-color:#1ba965;
+  width:100px;
+  cursor: pointer;
+
+}
+#form-signup a{
+    display: block;
+    text-align: right;
+    font-size: 15px;
+    color: #1ba965;
+    text-decoration: none;
+}
+#popup-container #submit-btn{
+    border-color:  #1ba965;
+    margin:10px;
+}
+/* sign up table styling end */
