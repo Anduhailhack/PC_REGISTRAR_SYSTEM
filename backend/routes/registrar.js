@@ -15,14 +15,27 @@ router.get("/getStudents/:lower_bound", (req, res) => {
             adp.getStudents(req.params.lower_bound, (err, result) => {
                 if (err) 
                 {
+                    if (err.code == 'ER_BAD_FIELD_ERROR')
+                    {
+                        res.status(500).json({status : "error", msg : "Incorrect parameter: " + req.params.lower_bound, route : ""});
+                        return;
+                    }
+
                     if (err.code != 'ECONNREFUSED')
                     {
                         res.status(500).json({status : "error", msg : "Database connection error.", route : ""});
+                        return;
                     }
                 }
                 
                 if (result)
                 {
+                    if (result.length <= 0)
+                    {
+                        res.status(500).json({status : "error", msg : "No student found.", route : "", result : result});
+                        return;
+                    }
+                    
                     res.status(500).json({status : "success", msg : "Student fetched successfully.", route : "", result : result});
                 }
             })
@@ -49,11 +62,18 @@ router.get("/getStudent/:id", (req, res) => {
                     if (err.code != 'ECONNREFUSED')
                     {
                         res.status(500).json({status : "error", msg : "Database connection error.", route : ""});
+                        return;
                     }
                 }
                 
                 if (result)
                 {
+                    if (result.length <= 0)
+                    {
+                        res.status(500).json({status : "error", msg : "No student found.", route : "", result : result});
+                        return;
+                    }
+                    
                     res.status(500).json({status : "success", msg : "Student fetched successfully.", route : "", result : result});
                 }
             })
@@ -65,7 +85,7 @@ router.get("/getStudent/:id", (req, res) => {
     }
 })
 
-router.get("/getDevice/:s_n", (req, res) => {
+router.get("/getDevice/:serial_no", (req, res) => {
     let adp = new DbAdapter("mysql");
     adp.connect((err) => {
         if (err) res.status(500).json({status : "error", msg : "Database connection error.", route : ""}).end();
@@ -73,9 +93,9 @@ router.get("/getDevice/:s_n", (req, res) => {
 
     if (req.params)
     {
-        if (req.params.s_n)
+        if (req.params.serial_no)
         {
-            adp.getDevice(req.params.s_n, (err, result) => {
+            adp.getDevice(req.params.serial_no, (err, result) => {
                 if (err) 
                 {
                     if (err.code != 'ECONNREFUSED')
@@ -86,6 +106,11 @@ router.get("/getDevice/:s_n", (req, res) => {
                 
                 if (result)
                 {
+                    if (result.length <= 0)
+                    {
+                        res.status(500).json({status : "error", msg : "No device found.", route : "", result : result});
+                        return;
+                    }
                     res.status(500).json({status : "success", msg : "Device fetched successfully.", route : "", result : result});
                 }
             })
@@ -118,6 +143,11 @@ router.get("/getDevices/:stud_id", (req, res) => {
                 
                 if (result)
                 {
+                    if (result.length <= 0)
+                    {
+                        res.status(500).json({status : "error", msg : "No device found.", route : "", result : result});
+                        return;
+                    }
                     res.status(500).json({status : "success", msg : "Device fetched successfully.", route : "", result : result});
                 }
             })
