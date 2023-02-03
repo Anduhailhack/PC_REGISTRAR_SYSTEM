@@ -1,0 +1,30 @@
+<%- include('./includes/header') %>
+
+<main class="main-area">
+    <p id="singleP">Debre Markos University </p>
+    <h1><span>PC - </span>Registration System</h1>
+    <p>
+        You can register any private device with a serial number to store, manage and access it in a fast and reliable manner! 
+    </p>
+    <div class="call-of-action">
+        <button class="btn-solid" id="register-here">Register Here</button>
+        <button class="btn-solid" id="scan-here">Scan Here</button>         
+    </div>
+</main>
+
+<% if (!data.username) { %>
+    <script> 
+        document.getElementById("register-here").addEventListener("click", e => {
+            // window.location.href = "/login";
+            document.getElementById("show-login").click();
+        });
+    </script>
+<% } else { %>
+    <script> 
+        document.getElementById("register-here").addEventListener("click", e => {
+            window.location.href = "/register";
+        });
+    </script>
+<% } %>
+
+<%- include('./includes/footer') %>   

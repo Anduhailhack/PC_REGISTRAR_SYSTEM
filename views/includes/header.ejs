@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style-new.css" />
+    <title>Home</title>
+</head>
+<body>
+    <div class="landing-page">
+        <section class="page-content">
+            <div class="circle-shadow shadow1"></div>
+            <div class="circle-shadow shadow2"></div>
+            <div class="circle-shadow shadow3"></div>
+
+            <div class="nav-bar">
+                <div class="logo">
+                    <img src="" alt="" class="logo-img">
+                    <span class="green-txt">PC - <span class="white-txt">Registrar</span></span>
+                </div>
+                <div class="tabs">
+                    <ul>
+                        <li>
+                            <a class="btn" href="/home"> Home</a>
+                        </li>
+                        <li>
+                          <a class="btn" href="/scan_qr">Qr Code</a>
+                        </li>
+                        <li>
+                            <a class="btn" href="/contact_us">Contact us</a>
+                        </li>
+                        <li>
+                          <a class="btn" href="/about_us"> About us</a>
+                        </li>
+                    </ul>
+                    <div class="call-of-action">
+                        <% if (data.username) { %>
+                            <div class="list-items">  
+                                <a href="#"> Profile </a>  
+                                <a href="/logout"> Logout </a>
+                            </div>  
+                            <div class="user-avatar">
+                                <img src="/assets/img/user.svg" height="60px" width="60px" alt="User Avatar">
+                                <%= data.username   %>
+                            </div>
+                        <% } else { %>
+                            <button id="show-login" class="btn-solid">Log in</button>
+                            <button id="signup-btn" class="btn-solid">Sign up</button>
+                        <% } %>
+                    </div>
+                </div>
+            </div>

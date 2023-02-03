@@ -21,4 +21,28 @@ var authorize = (req, res, next) => {
     }
 }
 
-module.exports = authorize;
+var authenticatedUser = (req, res, next) => {
+    let token;
+    if (req.cookies){
+        token = req.cookies.token;
+    }
+
+    if (token)
+    {
+        jwt.verify(token, config.secret, (err, decodedToken) => {
+            if (err){
+                res.locals.decodedToken = decodedToken;
+                next();
+            }else {
+                res.locals.decodedToken = decodedToken;
+                next();
+            }
+        })
+    }else {
+        res.locals.decodedToken = undefined;
+        next();
+        //res.status(401).json({status : 'error', msg : "Unauthorized user : please login!", route : "/api/auth/login"});
+    }
+}
+
+module.exports = {authorize, authenticatedUser}

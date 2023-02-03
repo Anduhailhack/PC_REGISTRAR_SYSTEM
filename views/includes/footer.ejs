@@ -1,0 +1,67 @@
+</section>
+</div>
+<% if (data.username) { %>
+    <script src="./js/script.js"></script>
+<% } else { %>
+<div class="popup login-popup">
+    <div class="btn-cancel-popup" id="close-login-popup">&times;</div>
+    <div class="form-container">
+        <div class="form-title">
+            <h2>Log in</h2>
+        </div>
+        <div class="warning-txt"></div>
+        <div class="form-element">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="user" class="input" placeholder="Username" />
+        </div>
+        <div class="form-element">
+          <label for="password">Password</label>
+          <input type="password" name="password" id="pass" class="input" placeholder="Password" />
+        </div>
+        <div class="form-element">
+            <label for="remember-me">
+                <input type="checkbox" /> Remember me
+            </label>
+        </div>
+        <div class="form-element">
+          <button id="submit-login" class="btn-solid">Log in</button>
+        </div> 
+        <div class="form-element" id="forgot">
+            <a class="accent-txt forget-pass" href="#">Forgot password?</a>
+        </div>
+    </div>
+</div>
+
+<div class="popup signup-popup">
+    <div class="btn-cancel-popup" id="close-signup-popup">&times;</div>
+    <div class="form-container">
+        <div class="form-title">
+            <h2>Sign up</h2>
+        </div>
+        <div class="warning-txt"></div>
+        <div class="form-element">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="user-signup" class="input" placeholder="Username" />
+        </div>
+        <div class="form-element">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email-signup" class="input" placeholder="Email" />
+        </div>
+        <div class="form-element">
+          <label for="password">Password</label>
+          <input type="password" name="password" id="pass-signup" class="input" placeholder="Password" />
+        </div>
+        <div class="form-element">
+            <label for="password">Confirm Password</label>
+            <input type="password" name="confirm-password" id="confirm-pass-signup" class="input" placeholder="Confirm password" />
+        </div>
+        <div class="form-element">
+          <button class="btn-solid" id="submit-signup">Sign up</button>
+        </div> 
+    </div>
+</div>
+<script src="./js/auth.js"></script>
+<% } %>
+
+</body>
+</html>

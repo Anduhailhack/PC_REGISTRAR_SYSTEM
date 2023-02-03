@@ -8,10 +8,6 @@ const jwt = require("jsonwebtoken")
 const {DbAdapter} = require("../database/adapter")
 const config = require("./config.json");
 
-router.get('/login', (req, res)=> {
-    res.sendFile(path.join(__dirname, "../../frontend/login.html"));
-})
-
 router.post('/login', (req, res) => {
     if (req.body.username && req.body.password)
     {
@@ -19,37 +15,43 @@ router.post('/login', (req, res) => {
         if (isValid.status)
         {
             let adp = new DbAdapter("mysql");
-            adp.connect(err => {if (err) res.status(500).json({status : "error", msg : "Database connection error.", route : ""})});
-            adp.getUser(req.body.username, async (err, result) => {
-                if (err) res.status(500).json({status : "error", msg : "Database connection error.", route : ""});
-
-                if (result)
-                {
-                    if (result.length >= 1){
-                        if (result[0].password)
+            adp.connect(err => {
+                if (err) {
+                    res.status(500).json({status : "error", msg : "Database connection error.", route : ""})
+                }else {
+                    adp.getUser(req.body.username, async (err, result) => {
+                        if (err) res.status(500).json({status : "error", msg : "Database connection error.", route : ""});
+        
+                        if (result)
                         {
-                            let logged = await bcrypt.compare(req.body.password, result[0].password);
-                            if (logged)
-                            {
-                                let token = _createToken(result[0].user_id);
-                                res.cookie("token", token, {
-                                    httpOnly : true,
-                                    maxAge : config.tokenExp * 1000
-                                });
-                                res.status(200).json({status : "success", msg : "User succefully logged in!", route : "/"});
+                            if (result.length >= 1){
+                                if (result[0].password)
+                                {
+                                    let logged = await bcrypt.compare(req.body.password, result[0].password);
+                                    if (logged)
+                                    {
+                                        let token = _createToken(result[0].user_id);
+                                        res.cookie("token", token, {
+                                            httpOnly : true,
+                                            maxAge : config.tokenExp * 1000
+                                        });
+                                        res.status(200).json({status : "success", msg : "User succefully logged in!", route : "/"});
+                                    }else {
+                                        res.status(200).json({status : "error", msg : "Unknown password!", route : ""});
+                                    } 
+                                }else {
+                                    res.status(200).json({status : "error", msg : "Unknown username or password!", route : ""});
+                                }
                             }else {
-                                res.status(200).json({status : "error", msg : "Unknown password!", route : ""});
-                            } 
+                                res.status(200).json({status : "error", msg : "Unknown username or password!", route : ""});
+                            }
                         }else {
                             res.status(200).json({status : "error", msg : "Unknown username or password!", route : ""});
                         }
-                    }else {
-                        res.status(200).json({status : "error", msg : "Unknown username or password!", route : ""});
-                    }
-                }else {
-                    res.status(200).json({status : "error", msg : "Unknown username or password!", route : ""});
+                    })
                 }
-            })
+            });
+           
         }else {
             res.status(500).json({status : "error", msg : isValid.msg, route : "/api/auth/login"});
         }
@@ -58,51 +60,52 @@ router.post('/login', (req, res) => {
     }
 })
 
-router.get('/signup', (req, res)=> {
-    res.sendFile(path.join(__dirname, "../../frontend/signup.html"));
-})
-
 router.post('/signup', async (req, res) => {
     if (req.body.email && req.body.username && req.body.password)
     {   
         let isValid = _validateInput(req.body, false);
-        console.log(req.body.password);
+
         if (isValid.status)
         {
             let adp = new DbAdapter("mysql");
             let salt = await bcrypt.genSalt();
             let password = await bcrypt.hash(req.body.password, salt);
-            console.log("Pass: " + password);
             let user_id = crypto.createHash('md5').update(req.body.username + req.body.password).digest('hex');
-            adp.connect(err => {if (err) res.status(500).json({status : "error", msg : "Database connection error.", route : ""})});
-            adp.setUser(req.body.email, req.body.username, password, user_id, err => {
-                if (err) {
-                    if (err.code){
-                        if (err.code == 'ER_DUP_ENTRY' && err.sqlMessage.indexOf('email') != -1)
-                        {
-                            res.status(400).json({status : "error", msg : "Email already in use.", route : "",})
-                        }
-
-                        if (err.code == 'ER_DUP_ENTRY')
-                        {
-                            res.status(400).json({status : "error", msg : "Username already in use.", route: ""})
-                        }
-                    }
-                }else {
-                    let token = _createToken(user_id);
-                    res.cookie("token", token, {
-                        httpOnly : true,
-                        maxAge : config.tokenExp * 1000
-                    });
-                    res.status(201).json({status : "success", msg : "User succefully created!", route : "/"});
+            adp.connect(err => {
+                if (err){
+                    res.status(500).json({status : "error", msg : "Database connection error.", route : "/home"});
+                    return;
                 }
+                adp.setUser(req.body.email, req.body.username, password, user_id, err => {
+                    if (err) {
+                        if (err.code){
+                            if (err.code == 'ER_DUP_ENTRY' && err.sqlMessage.indexOf('email') != -1)
+                            {
+                                res.status(400).json({status : "error", msg : "Email already in use.", route : "/home",})
+                            }
+    
+                            if (err.code == 'ER_DUP_ENTRY')
+                            {
+                                res.status(400).json({status : "error", msg : "Username already in use.", route: "/home"})
+                            }
+                        }
+                    }else {
+                        let token = _createToken(user_id);
+                        res.cookie("token", token, {
+                            httpOnly : true,
+                            maxAge : config.tokenExp * 1000
+                        });
+                        res.status(201).json({status : "success", msg : "User succefully created!", route : "/home"});
+                    }
+                });
+
             });
             
         }else {
-            res.status(400).json({status : "success", msg : isValid.msg, route : "/"});
+            res.status(400).json({status : "success", msg : isValid.msg, route : "/home"});
         }
     }else {
-        res.status(400).json({status: "error", msg : "All inputs are required.", route : ""});
+        res.status(400).json({status: "error", msg : "All inputs are required.", route : "/home"});
     }
 })
 

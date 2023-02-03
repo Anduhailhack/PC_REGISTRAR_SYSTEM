@@ -50,6 +50,11 @@ class MySqlDB {
         this.db.query("SELECT * FROM `user` WHERE `user_name` = ?;", [user], result);
     }
 
+    getUserName(user_id, result)
+    {
+        this.db.query("SELECT `user_name` FROM `user` WHERE `user_id` = ?;", [user_id], result);
+    }
+
     getStudent(id, result)
     {
         this.db.query("SELECT * FROM `student` WHERE `stud_id` = ?;", [id], result);

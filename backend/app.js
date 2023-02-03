@@ -4,8 +4,9 @@ const path = require("path");
 const c_Parser = require("cookie-parser")
 const registrar = require("./routes/registrar");
 const security = require("./routes/sec_check");
+const view = require("./routes/view");
 const auth = require("./auth/authentication");
-const authorize = require("./auth/authorization");
+const {authorize, authenticatedUser} = require("./auth/authorization");
 
 const app = express();
 
@@ -13,8 +14,9 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended : true}));     
 app.use(express.static(path.join(__dirname, "../frontend")));
+app.set("view engine", "ejs");
 app.use(c_Parser());
-
+app.use("/", authenticatedUser, view);
 app.use("/api/reg/", authorize, registrar);
 app.use("/api/sec/", authorize, security);
 app.use("/api/auth/", auth);

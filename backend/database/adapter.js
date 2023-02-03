@@ -46,6 +46,11 @@ class DbAdapter {
 
     }
 
+    getUserName(user_id, result)
+    {
+        this.db.getUserName(user_id, result);
+    }
+
     getUser(user, pass, result)
     {
         this.db.getUser(user, pass, result);
