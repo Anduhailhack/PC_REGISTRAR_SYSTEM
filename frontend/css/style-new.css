@@ -291,3 +291,8 @@ a {
 .form-element .forget-pass {
     align-self: flex-end;
 }
+
+.student-form {
+    display: grid;
+    grid-template-rows: 45% 45%;
+}

@@ -262,7 +262,7 @@ router.get('/register', (req, res) => {
             const db = new DbAdapter("mysql");
             db.connect(err => {
                 if (err) {
-                    res.render("\\register", {
+                    res.render('register', {
                         data : {username: username}
                     });
                     return;
@@ -270,7 +270,7 @@ router.get('/register', (req, res) => {
                     db.getUserName(res.locals.decodedToken.user_id, (err, result) => {
                         if (err)
                         {
-                            res.render("\\register", {
+                            res.render('register', {
                                 data : {username: username}
                             });
                             return;
@@ -281,7 +281,7 @@ router.get('/register', (req, res) => {
                             if (result.length >= 1)
                             {
                                 username = result[0].user_name;
-                                res.render("\\register", {
+                                res.render('register', {
                                     data : {username: username}
                                 });
                             }
@@ -290,12 +290,12 @@ router.get('/register', (req, res) => {
                 }
             });
         }else {
-            res.render("\\register", {
+            res.render('register', {
                 data : {username: username}
             });
         }
     }else {
-        res.render("\\register", {
+        res.render('register', {
             data : {username: username}
         }); 
     }

@@ -1,7 +1,66 @@
 <%- include('./includes/header') %>
 
 <main class="main-area">
-    Food
+    <div class="student-form">
+        <div class="form-container">
+            <div class="form-title">
+                <h2>Student Info</h2>
+            </div>
+            <div class="warning-txt"></div>
+            <div class="form-element">
+                <label for="fname">First name</label>
+                <input type="text" name="fname" id="fname-input" class="input" placeholder="First name" />
+            </div>
+            <div class="form-element">
+              <label for="mname">Middle Name</label>
+              <input type="text" name="mname" id="mname-input" class="input" placeholder="Middle name" />
+            </div>
+            <div class="form-element">
+              <label for="sname">Surn Name</label>
+              <input type="text" name="sname" id="sname-input" class="input" placeholder="Surn name" />
+            </div>
+            <div class="form-element">
+              <label for="studend-id">Student ID</label>
+              <input type="text" name="studend-id" id="student-id-input" class="input" placeholder="Student ID" />
+            </div>
+            <div class="form-element">
+              <label for="department">Department</label>
+              <!-- <input type="text" name="mname" id="mname-input" class="input" placeholder="Middle name" /> -->
+              <input type="text" list="dep-input" class="input" placeholder="Department">
+              <datalist name="department" id="dep-input">
+                <option value="Natural Science">
+                <option value="Social Science">
+                <option value="Techno">
+                <option value="Information Technology">
+                <option value="Software Engineering">
+                <option value="Pre-Engineering">
+                <option value="Hydrolics Engineering">
+                <option value="Electrical Engineering">
+              </datalist>
+            </div>
+            <div class="form-element">
+                <label for="class-year">Class Year</label>
+                <input type="text" name="class-year" id="class-year-input" class="input" placeholder="Class year" />
+            </div>
+            <div class="form-element">
+                <label for="acadamic-year">Academic Year</label>
+                <input type="text" name="acadamic-year" id="acadamic-year-input" class="input" placeholder="Acadamic year" />
+            </div>
+            <div class="form-element">
+                <label for="">Block & Dorm number</label>
+                <input type="number" name="block-num" id="block-num-input" class="input" placeholder="Block Number" />
+                <input type="number" name="dorm-num" id="dorm-num-input" class="input" placeholder="Dorm Number" />
+            </div>
+            <div class="form-element">
+                <label for="undergraduate">
+                    <input type="checkbox" input="undergraduate" /> Under graduate
+                </label>
+            </div>
+            <div class="form-element">
+              <button id="submit-login" class="btn-solid">Next</button>
+            </div> 
+        </div>
+    </div>
 </main>
 
 <%- include('./includes/footer') %> 
